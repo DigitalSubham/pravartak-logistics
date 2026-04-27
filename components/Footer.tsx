@@ -1,6 +1,38 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Mail, Phone, MapPin, Twitter, Linkedin, Facebook, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
+
+function XIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M18.9 2H22l-6.77 7.74L23 22h-6.1l-4.78-6.77L6.2 22H3.1l7.24-8.28L1 2h6.25l4.32 6.19L18.9 2Z" />
+    </svg>
+  )
+}
+
+function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.56A1.94 1.94 0 1 0 3.28 5a1.94 1.94 0 0 0 3.88-.06ZM20.44 20h-3.37v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.66V8.5h3.24v1.57h.04a3.55 3.55 0 0 1 3.19-1.75c3.42 0 4.05 2.25 4.05 5.18V20Z" />
+    </svg>
+  )
+}
+
+function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M13.5 22v-8.2h2.76l.41-3.2H13.5V8.56c0-.93.26-1.56 1.6-1.56h1.7V4.14A22.2 22.2 0 0 0 14.32 4c-2.45 0-4.12 1.5-4.12 4.24v2.36H7.44v3.2h2.76V22h3.3Z" />
+    </svg>
+  )
+}
+
+function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.9A3.85 3.85 0 0 0 3.9 7.75v8.5a3.85 3.85 0 0 0 3.85 3.85h8.5a3.85 3.85 0 0 0 3.85-3.85v-8.5a3.85 3.85 0 0 0-3.85-3.85h-8.5Zm8.95 1.42a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9A3.1 3.1 0 1 0 12 15.1 3.1 3.1 0 0 0 12 8.9Z" />
+    </svg>
+  )
+}
 
 const services = [
   { label: 'Air Freight', href: '/services' },
@@ -26,10 +58,10 @@ const legal = [
 ]
 
 const socials = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: XIcon, href: '#', label: 'Twitter' },
+  { icon: LinkedInIcon, href: '#', label: 'LinkedIn' },
+  { icon: FacebookIcon, href: '#', label: 'Facebook' },
+  { icon: InstagramIcon, href: '#', label: 'Instagram' },
 ]
 
 export default function Footer() {
