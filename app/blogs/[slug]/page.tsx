@@ -45,8 +45,13 @@ export function generateStaticParams() {
   return blogs.map((b) => ({ slug: b.slug }))
 }
 
-export default function BlogDetailPage({ params }: { params: { slug: string } }) {
-  const post = blogs.find((b) => b.slug === params.slug)
+export default async function BlogDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const post = blogs.find((b) => b.slug === slug)
   if (!post) notFound()
 
   const content      = blogContent[post.slug] || fallbackContent

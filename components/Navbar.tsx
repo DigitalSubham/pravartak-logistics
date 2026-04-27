@@ -18,17 +18,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
-
-  const isHeroPage = pathname === '/'
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => { setOpen(false) }, [pathname])
 
@@ -37,19 +27,15 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  const solidBg = !isHeroPage || scrolled
-
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${solidBg ? 'bg-white shadow-md' : 'bg-transparent'
-          }`}
+        className="fixed top-0 inset-x-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-md transition-all duration-300"
       >
         <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: GRAD }} />
 
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`flex items-center justify-between transition-all duration-300 ${solidBg ? 'h-[70px]' : 'h-[108px]'
-            }`}>
+          <div className="flex h-[66px] items-center justify-between transition-all duration-300 lg:h-[90px]">
 
             <Link href="/" className="flex items-center shrink-0">
               <Image
@@ -57,10 +43,7 @@ export default function Navbar() {
                 alt="Pravartak Logistics India Private Limited"
                 width={420}
                 height={112}
-                className={`h-16 sm:h-[72px] lg:h-[84px] xl:h-[96px] w-auto object-contain transition-all duration-300 ${solidBg
-                  ? 'lg:h-[74px] xl:h-[82px]'
-                  : 'brightness-0 invert drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] lg:h-[84px] xl:h-[96px]'
-                  }`}
+                className="h-[62px] w-auto object-contain transition-all duration-300 sm:h-[68px] lg:h-[82px] xl:h-[88px]"
                 priority
               />
             </Link>
@@ -74,9 +57,7 @@ export default function Navbar() {
                     href={link.href}
                     className={`relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 group ${active
                       ? 'text-white'
-                      : solidBg
-                        ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                        : 'text-white/85 hover:text-white hover:bg-white/10'
+                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                       }`}
                   >
                     {active && (
@@ -97,8 +78,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-4">
               <Link
                 href="/track"
-                className={`text-sm font-semibold transition-colors duration-200 ${solidBg ? 'text-slate-600 hover:text-slate-900' : 'text-white/80 hover:text-white'
-                  }`}
+                className="text-sm font-semibold text-slate-600 transition-colors duration-200 hover:text-slate-900"
               >
                 Track Shipment
               </Link>
@@ -113,8 +93,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setOpen(true)}
-              className={`lg:hidden p-2.5 rounded-xl transition-colors duration-200 ${solidBg ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-                }`}
+              className="rounded-xl p-2.5 text-slate-700 transition-colors duration-200 hover:bg-slate-100 lg:hidden"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
@@ -143,7 +122,7 @@ export default function Navbar() {
             alt="Pravartak Logistics"
             width={280}
             height={75}
-            className="h-14 sm:h-16 w-auto object-contain"
+            className="h-[62px] sm:h-[68px] w-auto object-contain"
           />
           <button
             onClick={() => setOpen(false)}

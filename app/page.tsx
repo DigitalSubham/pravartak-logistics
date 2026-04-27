@@ -15,71 +15,87 @@ const GRAD = 'linear-gradient(135deg, #C2185B 0%, #9C27B0 35%, #3949AB 65%, #00A
 // ─── Hero ────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0628 0%, #0e1340 50%, #001e2b 100%)' }}>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Gradient blobs */}
-      <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-25" style={{ background: '#C2185B' }} />
-      <div className="absolute bottom-1/4 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-20" style={{ background: '#00ACC1' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blur-3xl opacity-10" style={{ background: '#9C27B0' }} />
+      <div className="absolute top-16 right-[-140px] h-[360px] w-[360px] rounded-full blur-3xl opacity-10" style={{ background: '#C2185B' }} />
+      <div className="absolute bottom-10 left-[-120px] h-[320px] w-[320px] rounded-full blur-3xl opacity-10" style={{ background: '#00ACC1' }} />
+      <div className="absolute top-1/2 left-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-[0.07]" style={{ background: '#9C27B0' }} />
       {/* Grid texture */}
-      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32">
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-center">
 
           {/* Left */}
           <div>
-            {/* Logo large in hero */}
-            {/* <div className="mb-8">
-              <Image
-                src="/logo_t.png"
-                alt="Pravartak Logistics"
-                width={320}
-                height={86}
-                className="h-16 sm:h-20 lg:h-24 w-auto object-contain brightness-0 invert"
-                priority
-              />
-            </div> */}
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-medium mb-6">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Trusted across India & beyond
             </div>
 
-            <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-6">
+            <h1 className="mb-6 font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-900 lg:text-6xl xl:text-7xl">
               Logistics That
               <span className="block mt-1" style={{ background: GRAD, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 Never Stops.
               </span>
             </h1>
 
-            <p className="text-white/60 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg">
+            <p className="mb-8 max-w-xl text-lg leading-relaxed text-slate-600 lg:text-xl">
               Pravartak connects your business to the world — fast, reliable, and trackable shipments on time, every time.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button href="/order" size="lg">
-                Get a Free Quote <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Link
-                href="/track"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-200"
-              >
-                <Search className="w-4 h-4" /> Track Shipment
-              </Link>
+            <div className="mb-4 max-w-2xl rounded-[28px] border border-slate-200 bg-white p-3 shadow-[0_24px_80px_rgba(15,23,42,0.10)]">
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-slate-50 px-4 py-4">
+                  <Search className="h-5 w-5 shrink-0 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Enter tracking ID"
+                    className="min-w-0 flex-1 bg-transparent text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none"
+                  />
+                </div>
+                <Link
+                  href="/track"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 sm:px-7"
+                  style={{ background: GRAD }}
+                >
+                  Track Shipment <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+
+            <p className="mb-12 text-sm text-slate-500">
+              Enter your shipment ID to get the latest delivery status instantly.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+              <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                Live status updates
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                Nationwide coverage
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                Fast response support
+              </span>
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap items-center gap-8">
+            <div className="mt-10 flex flex-wrap items-center gap-8">
               {[
                 { value: '500K+', label: 'Deliveries' },
                 { value: '99.4%', label: 'On-time Rate' },
                 { value: '80+', label: 'Cities Served' },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  {i > 0 && <div className="w-px h-8 bg-white/20" />}
+                  {i > 0 && <div className="h-8 w-px bg-slate-200" />}
                   <div>
-                    <div className="font-display font-bold text-white text-xl" style={{ background: GRAD, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{stat.value}</div>
-                    <div className="text-white/40 text-xs">{stat.label}</div>
+                    <div className="font-display text-xl font-bold" style={{ background: GRAD, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{stat.value}</div>
+                    <div className="text-xs text-slate-500">{stat.label}</div>
                   </div>
                 </div>
               ))}
@@ -88,37 +104,39 @@ function Hero() {
 
           {/* Right — tracking card */}
           <div className="lg:pl-8">
-            <div className="rounded-3xl p-8 shadow-2xl border border-white/10" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(20px)' }}>
-              <p className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-1">Quick Track</p>
-              <h3 className="font-display text-white text-xl font-bold mb-6">Where's my shipment?</h3>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="text"
-                  placeholder="Enter tracking ID…"
-                  className="w-full flex-1 min-w-0 px-4 py-3.5 rounded-xl text-white placeholder-white/40 text-sm focus:outline-none transition-all"
-                  style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)' }}
-                />
-                <Link
-                  href="/track"
-                  className="w-full sm:w-auto justify-center px-5 py-3.5 text-white rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-200 hover:opacity-90"
-                  style={{ background: GRAD }}
-                >
-                  <Search className="w-4 h-4" /> Track
-                </Link>
+            <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.10)]">
+              <div className="border-b border-slate-200 bg-slate-50 px-7 py-5">
+                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Shipment Visibility</p>
+                <h3 className="font-display text-2xl font-bold text-slate-900">Track every movement with clarity.</h3>
               </div>
 
-              <div className="mt-6 space-y-3">
+              <div className="space-y-4 p-7">
                 {[
-                  { id: 'PL-48291', status: 'In Transit', from: 'Mumbai', to: 'Delhi', color: '#f59e0b' },
-                  { id: 'PL-38102', status: 'Delivered', from: 'Chennai', to: 'Kolkata', color: '#10b981' },
-                  { id: 'PL-57834', status: 'Processing', from: 'Pune', to: 'Hyderabad', color: '#3949AB' },
-                ].map((pkg) => (
-                  <div key={pkg.id} className="flex items-center justify-between p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <div>
-                      <p className="text-white text-xs font-semibold">{pkg.id}</p>
-                      <p className="text-white/40 text-xs">{pkg.from} → {pkg.to}</p>
+                  { label: 'Pickup Confirmed', detail: 'Mumbai Hub • 09:30 AM', color: '#3949AB' },
+                  { label: 'In Transit', detail: 'Heading to Delhi Sort Center', color: '#f59e0b' },
+                  { label: 'Out for Delivery', detail: 'Expected today by 6:00 PM', color: '#10b981' },
+                ].map((item, i) => (
+                  <div key={item.label} className="flex gap-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
+                    <div className="flex flex-col items-center">
+                      <span className="h-3 w-3 rounded-full" style={{ background: item.color }} />
+                      {i < 2 && <span className="mt-2 h-10 w-px bg-slate-200" />}
                     </div>
-                    <span className="text-xs font-semibold" style={{ color: pkg.color }}>{pkg.status}</span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">{item.label}</p>
+                      <p className="mt-1 text-sm text-slate-500">{item.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="grid grid-cols-3 border-t border-slate-200 bg-white">
+                {[
+                  { value: '24/7', label: 'Tracking' },
+                  { value: '80+', label: 'Cities' },
+                  { value: '99.4%', label: 'On Time' },
+                ].map((item) => (
+                  <div key={item.label} className="px-4 py-5 text-center">
+                    <p className="font-display text-xl font-bold text-slate-900">{item.value}</p>
+                    <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">{item.label}</p>
                   </div>
                 ))}
               </div>
