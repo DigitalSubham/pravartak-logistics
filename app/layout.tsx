@@ -3,6 +3,7 @@ import { Sora, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import WhatsAppFloat from '@/components/WhatsAppFloat'
 
 const display = Sora({
   subsets: ['latin'],
@@ -17,21 +18,23 @@ const body = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Pravartak Logistics | Fast, Reliable Delivery',
-  description: 'Premium logistics solutions — transportation, warehousing, and last-mile delivery for businesses of all sizes.',
+  title: 'Pravartak Logistics India | Fast, Reliable Delivery',
+  description: 'Pravartak Logistics India Private Limited — premium logistics solutions including road transport, warehousing, and last-mile delivery across India and beyond.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="font-sans bg-white text-slate-800 antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   )

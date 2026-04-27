@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --brand-pink:    #C2185B;
+    --brand-fuchsia: #9C27B0;
+    --brand-purple:  #6A1B9A;
+    --brand-indigo:  #3949AB;
+    --brand-blue:    #1E88E5;
+    --brand-cyan:    #0097A7;
+    --brand-teal:    #00ACC1;
+    --brand-gradient: linear-gradient(135deg, #C2185B 0%, #9C27B0 30%, #3949AB 60%, #00ACC1 100%);
+    --brand-gradient-r: linear-gradient(to right, #C2185B, #9C27B0, #3949AB, #00ACC1);
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -17,10 +29,33 @@
 }
 
 @layer utilities {
+  /* Gradient text utility */
+  .text-brand-gradient {
+    background: var(--brand-gradient-r);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient background */
+  .bg-brand-gradient {
+    background: var(--brand-gradient);
+  }
+
+  .bg-brand-gradient-r {
+    background: var(--brand-gradient-r);
+  }
+
+  /* Gradient border via pseudo-element trick */
+  .border-brand-gradient {
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
   .animation-delay-100 { animation-delay: 100ms; }
   .animation-delay-200 { animation-delay: 200ms; }
   .animation-delay-300 { animation-delay: 300ms; }
   .animation-delay-400 { animation-delay: 400ms; }
   .animation-fill-both { animation-fill-mode: both; }
-  .opacity-0-init { opacity: 0; }
 }

@@ -1,31 +1,23 @@
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { ReactNode, CSSProperties } from 'react'
 
-type Variant = 'primary' | 'secondary' | 'outline' | 'ghost'
-type Size = 'sm' | 'md' | 'lg'
+type Variant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'white'
+type Size    = 'sm' | 'md' | 'lg'
 
 interface ButtonProps {
-  children: ReactNode
-  variant?: Variant
-  size?: Size
-  href?: string
+  children:  ReactNode
+  variant?:  Variant
+  size?:     Size
+  href?:     string
   className?: string
-  type?: 'button' | 'submit' | 'reset'
+  style?:    CSSProperties
+  type?:     'button' | 'submit' | 'reset'
   disabled?: boolean
-  onClick?: () => void
+  onClick?:  () => void
   external?: boolean
 }
 
-const variants: Record<Variant, string> = {
-  primary:
-    'bg-blue-600 text-white hover:bg-blue-700 shadow-md shadow-blue-200 hover:shadow-lg hover:shadow-blue-200 hover:-translate-y-0.5',
-  secondary:
-    'bg-slate-900 text-white hover:bg-slate-800 shadow-md shadow-slate-200 hover:shadow-lg hover:-translate-y-0.5',
-  outline:
-    'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white hover:-translate-y-0.5',
-  ghost:
-    'text-slate-600 hover:text-slate-900 hover:bg-slate-100',
-}
+const GRADIENT = 'linear-gradient(135deg, #C2185B 0%, #9C27B0 35%, #3949AB 65%, #00ACC1 100%)'
 
 const sizes: Record<Size, string> = {
   sm: 'px-4 py-2 text-sm',
@@ -35,34 +27,56 @@ const sizes: Record<Size, string> = {
 
 export default function Button({
   children,
-  variant = 'primary',
-  size = 'md',
+  variant  = 'primary',
+  size     = 'md',
   href,
   className = '',
-  type = 'button',
+  style,
+  type     = 'button',
   disabled = false,
   onClick,
   external = false,
 }: ButtonProps) {
-  const base = `inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''} ${className}`
+  const base = `inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 ${sizes[size]} ${
+    disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''
+  } ${className}`
+
+  const getStyle = (): CSSProperties => {
+    if (style) return style
+    switch (variant) {
+      case 'primary':
+        return { background: GRADIENT, color: '#fff', boxShadow: '0 4px 20px rgba(156,39,176,0.35)' }
+      case 'secondary':
+        return { background: '#1e293b', color: '#fff' }
+      case 'outline':
+        return { border: '2px solid transparent', backgroundImage: `${GRADIENT}, ${GRADIENT}`, backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', color: '#6A1B9A' }
+      case 'ghost':
+        return { color: '#3949AB', background: 'transparent' }
+      case 'white':
+        return { background: '#fff', color: '#6A1B9A', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }
+      default:
+        return {}
+    }
+  }
+
+  const hoverClass = variant === 'primary'
+    ? 'hover:-translate-y-0.5 hover:shadow-2xl'
+    : variant === 'white'
+    ? 'hover:-translate-y-0.5 hover:bg-purple-50'
+    : variant === 'outline'
+    ? 'hover:-translate-y-0.5'
+    : ''
+
+  const finalClass = `${base} ${hoverClass}`
+  const finalStyle = getStyle()
 
   if (href) {
-    if (external) {
-      return (
-        <a href={href} className={base} target="_blank" rel="noopener noreferrer">
-          {children}
-        </a>
-      )
-    }
-    return (
-      <Link href={href} className={base}>
-        {children}
-      </Link>
-    )
+    if (external) return <a href={href} className={finalClass} style={finalStyle} target="_blank" rel="noopener noreferrer">{children}</a>
+    return <Link href={href} className={finalClass} style={finalStyle}>{children}</Link>
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={base}>
+    <button type={type} onClick={onClick} disabled={disabled} className={finalClass} style={finalStyle}>
       {children}
     </button>
   )

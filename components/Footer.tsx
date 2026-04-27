@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Package2, Mail, Phone, MapPin, Twitter, Linkedin, Facebook, Instagram } from 'lucide-react'
+import Image from 'next/image'
+import { Mail, Phone, MapPin, Twitter, Linkedin, Facebook, Instagram } from 'lucide-react'
 
 const services = [
   { label: 'Air Freight', href: '/services' },
@@ -34,21 +35,22 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-400">
-      {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Brand Column */}
+
+          {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center">
-                <Package2 className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-display font-700 text-xl text-white">
-                Pravartak<span className="text-blue-400"> Logistics</span>
-              </span>
+            <Link href="/" className="flex items-center mb-6">
+              <Image
+                src="/logo_t.png"
+                alt="Pravartak Logistics"
+                width={320}
+                height={86}
+                className="h-16 sm:h-20 lg:h-24 w-auto object-contain brightness-0 invert"
+              />
             </Link>
-            <p className="text-sm leading-relaxed text-slate-400 mb-6">
-              Delivering excellence across borders. Your trusted logistics partner for reliable, fast, and secure shipments worldwide.
+            <p className="max-w-xs text-sm leading-relaxed text-slate-400 mb-6">
+              Delivering excellence across India and beyond. Your trusted logistics partner for reliable, fast, and secure shipments.
             </p>
             <div className="flex gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
@@ -56,9 +58,10 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-colors duration-200"
+                  className="w-9 h-9 rounded-lg bg-slate-800 hover:opacity-80 flex items-center justify-center transition-opacity duration-200"
+                  style={{ background: 'linear-gradient(135deg, #C2185B, #9C27B0, #3949AB, #00ACC1)' }}
                 >
-                  <Icon className="w-4 h-4 text-slate-400 hover:text-white" />
+                  <Icon className="w-4 h-4 text-white" />
                 </a>
               ))}
             </div>
@@ -97,21 +100,21 @@ export default function Footer() {
             <h4 className="font-display font-semibold text-white text-sm mb-5 tracking-wide uppercase">Contact</h4>
             <ul className="space-y-4">
               <li>
-                <a href="tel:+11234567890" className="flex items-start gap-3 text-sm hover:text-white transition-colors duration-200">
-                  <Phone className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
-                  +1 (123) 456-7890
+                <a href="tel:+911234567890" className="flex items-start gap-3 text-sm hover:text-white transition-colors duration-200">
+                  <Phone className="w-4 h-4 mt-0.5 shrink-0" style={{ color: '#00ACC1' }} />
+                  +91 12345 67890
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@pravartaklogistics.in" className="flex items-start gap-3 text-sm hover:text-white transition-colors duration-200">
-                  <Mail className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
-                  hello@pravartaklogistics.in
+                <a href="mailto:info@pravartak.com" className="flex items-start gap-3 text-sm hover:text-white transition-colors duration-200">
+                  <Mail className="w-4 h-4 mt-0.5 shrink-0" style={{ color: '#9C27B0' }} />
+                  info@pravartak.com
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-3 text-sm">
-                  <MapPin className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
-                  1200 Commerce Ave, Suite 400<br />New York, NY 10001
+                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: '#C2185B' }} />
+                  Pravartak House, Logistics Park,<br />Mumbai, Maharashtra 400001
                 </span>
               </li>
             </ul>
@@ -119,11 +122,14 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Gradient bar */}
+      <div className="h-1 w-full" style={{ background: 'linear-gradient(to right, #C2185B, #9C27B0, #3949AB, #00ACC1)' }} />
+
+      {/* Bottom */}
       <div className="border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} Pravartak Logistics. All rights reserved.
+            © {new Date().getFullYear()} Pravartak Logistics India Private Limited. All rights reserved.
           </p>
           <div className="flex gap-5">
             {legal.map((l) => (
