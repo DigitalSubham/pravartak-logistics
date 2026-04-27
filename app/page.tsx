@@ -30,8 +30,7 @@ function Hero() {
           <div>
 
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Trusted across India & beyond
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />{' '}
             </div>
 
             <h1 className="mb-6 font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-900 lg:text-6xl xl:text-7xl">
